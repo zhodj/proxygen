@@ -14,6 +14,8 @@
 
 #include "EchoStats.h"
 
+#include <cpp_redis/cpp_redis>
+
 using namespace proxygen;
 
 namespace EchoService {
