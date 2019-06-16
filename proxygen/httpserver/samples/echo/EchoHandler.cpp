@@ -16,6 +16,8 @@
 
 #include <cpp_redis/cpp_redis>
 
+#include <iostream>
+
 using namespace proxygen;
 
 namespace EchoService {
@@ -23,7 +25,21 @@ namespace EchoService {
 EchoHandler::EchoHandler(EchoStats* stats): stats_(stats) {
 }
 
-void EchoHandler::onRequest(std::unique_ptr<HTTPMessage> /*headers*/) noexcept {
+void EchoHandler::onRequest(std::unique_ptr<HTTPMessage> headers) noexcept {
+
+  cpp_redis::client client;
+  client.connect();
+
+  request_ = std::move(headers);
+
+  if(request_->getPath() == "/api/get")
+  {
+
+    client.get("", [](cpp_redis::reply & reply)) {
+      std::cout << reply << std::endl;
+    }
+  }
+
   stats_->recordRequest();
 }
 
