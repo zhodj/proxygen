@@ -46,3 +46,5 @@ _build/
 
 G*
 .ccls-cache/
+samples/
+CompressionSimulator

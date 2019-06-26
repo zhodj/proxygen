@@ -46,6 +46,9 @@ AC_CHECK_LIB([glog],[openlog],[],[AC_MSG_ERROR(
 AC_CHECK_LIB([gflags],[getenv],[],AC_MSG_ERROR(
              [Please install google-gflags library]))
 
+#AC_CHECK_LIB([cpp_redis],[get],[],AC_MSG_ERROR(
+#             [Please install cpp_redis library]))
+
 # check for boost libs
 AX_BOOST_BASE([1.51.0], [], [AC_MSG_ERROR(
               [Please install boost >= 1.51.0])])
@@ -209,7 +212,7 @@ if test x"$HAVE_GPERF" != x"yes"; then
    AC_MSG_ERROR([Please install gperf first.])
 fi
 
-LIBS="$LIBS -ldouble-conversion -lpthread -ldl $BOOST_LDFLAGS -lboost_context -lboost_filesystem -lboost_regex -lboost_program_options -lboost_system -lboost_thread"
+LIBS="$LIBS -ldouble-conversion -lpthread -ldl $BOOST_LDFLAGS -lboost_context -lboost_filesystem -lboost_regex -lboost_program_options -lboost_system -lboost_thread -lcpp_redis -ltacopie"
 
 AM_CONDITIONAL([HAVE_STD_THREAD], [test "$ac_cv_header_features" = "yes"])
 AM_CONDITIONAL([HAVE_X86_64], [test "$build_cpu" = "x86_64"])

@@ -43,6 +43,8 @@ class EchoHandler : public proxygen::RequestHandler {
   std::unique_ptr<folly::IOBuf> body_;
 
   std::unique_ptr<proxygen::HTTPMessage> request_;
+
+  std::string gvalue_;
 };
 
 }

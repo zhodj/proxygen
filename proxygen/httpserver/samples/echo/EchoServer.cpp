@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
 
   HTTPServerOptions options;
   options.threads = static_cast<size_t>(FLAGS_threads);
-  options.idleTimeout = std::chrono::milliseconds(60000);
+  options.idleTimeout = std::chrono::milliseconds(500);
   options.shutdownOn = {SIGINT, SIGTERM};
   options.enableContentCompression = false;
   options.handlerFactories = RequestHandlerChain()
